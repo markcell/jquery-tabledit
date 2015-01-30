@@ -19,7 +19,7 @@ The following hooks are available:
 Only with the required options.
 
 ```js
-$('table').Tabledit({
+$('#example1').Tabledit({
     url: 'example1.php',
     columns: {
         identifier: [0, 'id'],                    
@@ -31,14 +31,14 @@ $('table').Tabledit({
 With non required options and a third parameter in editable columns to create a select instead of input.
 
 ```js
-$('table').Tabledit({
+$('#example2').Tabledit({
     url: 'example2.php',
     eventType: 'dblclick',
     hideIdentifier: true,
     textSelection: false,
     columns: {
         identifier: [0, 'id'],                    
-        editable: [[1, 'car'], [2, 'color', {'1': 'red', '2': 'green', '3': 'blue'}]]
+        editable: [[1, 'car'], [2, 'color', '{"1": "Red", "2": "Green", "3": "Blue"}']]
     }
 });
 ```
