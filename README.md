@@ -5,7 +5,7 @@ Inline editor for HTML tables.
 The following options are supported:
 * url: link to server script (default = window.location.href)
 * inputClass: class for form inputs (default = 'form-control input-sm')
-* eventType: type of trigger to when want change for edit mode (default = 'click')
+* eventType: trigger to change for edit mode (default = 'click')
 * hideIdentifier: hide the column that has the identifier (default = false)
 * textSelection: enable text selection on editable columns (default = true)
 
