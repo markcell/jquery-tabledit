@@ -1,2 +1,2 @@
 # jQuery-Tabledit
-Inline editor for HTML tables.
+Inline editor for HTML tables. (soon)
