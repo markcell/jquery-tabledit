@@ -38,7 +38,7 @@ $('table').Tabledit({
     textSelection: false,
     columns: {
         identifier: [0, 'id'],                    
-        editable: [[1, 'model'], [2, 'color', {'1': 'red', '2': 'green', '3': 'blue'}]]
+        editable: [[1, 'car'], [2, 'color', {'1': 'red', '2': 'green', '3': 'blue'}]]
     }
 });
 ```
