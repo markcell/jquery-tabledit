@@ -15,18 +15,30 @@ The following hooks are available:
 * onComplete(response): executed when the ajax request is completed
 * onError(): executed when occurred an error on ajax request
 
-## Help
-Soon with more examples.
-
 ## Examples
 Only with the required options.
 
 ```js
 $('table').Tabledit({
-    url: 'example.php',
+    url: 'example1.php',
     columns: {
         identifier: [0, 'id'],                    
         editable: [[2, 'firstname'], [3, 'lastname']]
+    }
+});
+```
+
+With non required options and a third parameter in editable columns to create a select instead of input.
+
+```js
+$('table').Tabledit({
+    url: 'example2.php',
+    eventType: 'dblclick',
+    hideIdentifier: true,
+    textSelection: false,
+    columns: {
+        identifier: [0, 'id'],                    
+        editable: [[1, 'model'], [2, 'color', {'1': 'red', '2': 'green', '3': 'blue'}]]
     }
 });
 ```
