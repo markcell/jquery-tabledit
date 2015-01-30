@@ -20,7 +20,7 @@ Only with the required options.
 
 ```js
 $('#example1').Tabledit({
-    url: 'example1.php',
+    url: 'example.php',
     columns: {
         identifier: [0, 'id'],                    
         editable: [[2, 'firstname'], [3, 'lastname']]
@@ -32,7 +32,7 @@ With non required options and a third parameter in editable columns to create a 
 
 ```js
 $('#example2').Tabledit({
-    url: 'example2.php',
+    url: 'example.php',
     eventType: 'dblclick',
     hideIdentifier: true,
     textSelection: false,
