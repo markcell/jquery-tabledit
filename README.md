@@ -1,5 +1,5 @@
 # jQuery-Tabledit
-Inline editor for HTML tables. (coming soon with more examples)
+Inline editor for HTML tables.
 
 ## Options
 The following options are supported:
@@ -15,7 +15,10 @@ The following hooks are available:
 * onComplete(response): executed when the ajax request is completed
 * onError(): executed when occurred an error on ajax request
 
-## Example
+## Help
+Soon with more examples.
+
+## Examples
 Only with the required options.
 
 ```js
