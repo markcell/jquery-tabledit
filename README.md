@@ -11,9 +11,9 @@ The following options are supported:
 
 ## Hooks
 The following hooks are available:
-* onDraw: executed after draw the structure
-* onComplete: executed when the ajax request is completed
-* onError: executed when occurred an error on ajax request
+* onDraw(): executed after draw the structure
+* onComplete(response): executed when the ajax request is completed
+* onError(): executed when occurred an error on ajax request
 
 ## Example
 Only with the required options.
