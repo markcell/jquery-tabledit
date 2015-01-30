@@ -20,11 +20,11 @@ Only with the required options.
 
 ```js
 $('#example1').Tabledit({
-    url: 'example.php',
-    columns: {
-        identifier: [0, 'id'],                    
-        editable: [[2, 'firstname'], [3, 'lastname']]
-    }
+  url: 'example.php',
+  columns: {
+    identifier: [0, 'id'],                    
+    editable: [[2, 'firstname'], [3, 'lastname']]
+  }
 });
 ```
 
@@ -32,16 +32,19 @@ With non required options and a third parameter in editable columns to create a 
 
 ```js
 $('#example2').Tabledit({
-    url: 'example.php',
-    eventType: 'dblclick',
-    hideIdentifier: true,
-    textSelection: false,
-    columns: {
-        identifier: [0, 'id'],                    
-        editable: [[1, 'car'], [2, 'color', '{"1": "Red", "2": "Green", "3": "Blue"}']]
-    }
+  url: 'example.php',
+  eventType: 'dblclick',
+  hideIdentifier: true,
+  textSelection: false,
+  columns: {
+    identifier: [0, 'id'],                    
+    editable: [[1, 'car'], [2, 'color', '{"1": "Red", "2": "Green", "3": "Blue"}']]
+  }
 });
 ```
+
+See demo page with the examples above on this link: 
+http://markcell.github.io/examples/jquery.tabledit.html
 
 ## License
 Code released under the MIT license.
