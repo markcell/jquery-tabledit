@@ -1,5 +1,5 @@
 # jQuery-Tabledit
-Inline editor for HTML tables.
+Inline editor for HTML tables compatible with Bootstrap.
 
 ## Options
 The following options are supported:
