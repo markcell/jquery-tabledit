@@ -33,7 +33,9 @@ $('#example1').Tabledit({
   editButton: false,
   removeButton: false,
   columns: {
+    // Identifier column [column_index, input_name]
     identifier: [0, 'id'],
+    // Editable columns [[column_index, input_name], [column_index, input_name]]
     editable: [[2, 'firstname'], [3, 'lastname']]
   }
 });
@@ -49,7 +51,9 @@ $('#example2').Tabledit({
   hideIdentifier: true,
   textSelection: false,
   columns: {
+    // Identifier column [column_index, input_name]
     identifier: [0, 'id'],
+    // Editable columns [[column_index, input_name], [column_index, input_name, select_options]]
     editable: [[1, 'car'], [2, 'color', '{"1": "Red", "2": "Green", "3": "Blue"}']]
   }
 });
