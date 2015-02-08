@@ -29,83 +29,83 @@ http://markcell.github.io/examples/jquery.tabledit.html
 ```js
 // Example #1
 $('#example1').Tabledit({
-    url: 'example.php',
-    editButton: false,
-    removeButton: false,
-    columns: {
-        identifier: [0, 'id'],
-        editable: [[2, 'firstname'], [3, 'lastname']]
-    }
+  url: 'example.php',
+  editButton: false,
+  removeButton: false,
+  columns: {
+    identifier: [0, 'id'],
+    editable: [[2, 'firstname'], [3, 'lastname']]
+  }
 });
 ```
 
 ```js
 // Example #2
 $('#example2').Tabledit({
-    url: 'example.php',
-    eventType: 'dblclick',
-    editButton: false,
-    removeButton: false,
-    hideIdentifier: true,
-    textSelection: false,
-    columns: {
-        identifier: [0, 'id'],
-        editable: [[1, 'car'], [2, 'color', '{"1": "Red", "2": "Green", "3": "Blue"}']]
-    }
+  url: 'example.php',
+  eventType: 'dblclick',
+  editButton: false,
+  removeButton: false,
+  hideIdentifier: true,
+  textSelection: false,
+  columns: {
+    identifier: [0, 'id'],
+    editable: [[1, 'car'], [2, 'color', '{"1": "Red", "2": "Green", "3": "Blue"}']]
+  }
 });
 ```
 
 ```js
 // Example #3
 $('#example3').Tabledit({
-    url: 'example.php',
-    columns: {
-        identifier: [0, 'id'],
-        editable: [[1, 'nickname'], [2, 'firstname'], [3, 'lastname']]
-    }
+  url: 'example.php',
+  columns: {
+    identifier: [0, 'id'],
+    editable: [[1, 'nickname'], [2, 'firstname'], [3, 'lastname']]
+  }
 });
 ```
 
 ```js
 // Example #4
 $('#example4').Tabledit({
-    url: 'example.php',
-    editButton: false,
-    hideIdentifier: true,
-    columns: {
-        identifier: [0, 'id'],
-        editable: [[1, 'car'], [2, 'color', '{"1": "Red", "2": "Green", "3": "Blue"}']]
-    }
+  url: 'example.php',
+  editButton: false,
+  hideIdentifier: true,
+  columns: {
+    identifier: [0, 'id'],
+    editable: [[1, 'car'], [2, 'color', '{"1": "Red", "2": "Green", "3": "Blue"}']]
+  }
 });
 ```
 
 ```js
 // Example #5
 $('#example5').Tabledit({
-    url: 'example.php',
-    removeButton: false,
-    buttons: {
-        edit: {
-            class: 'btn btn-sm btn-primary',
-            html: 'Edit'
-        },
-        remove: {
-            class: 'btn btn-sm btn-danger',
-            html: '<span class="glyphicon glyphicon-trash"></span>'
-        },
-        save: {
-            class: 'btn btn-sm btn-success',
-            html: 'Save'
-        },
-        cancel: {
-            class: 'btn btn-sm btn-danger',
-            html: 'Cancel'
-        }
+  url: 'example.php',
+  removeButton: false,
+  buttons: {
+    edit: {
+      class: 'btn btn-sm btn-primary',
+      html: 'Edit'
     },
-    columns: {
-        identifier: [0, 'id'],
-        editable: [[1, 'nickname'], [2, 'firstname'], [3, 'lastname']]
+    remove: {
+      class: 'btn btn-sm btn-danger',
+      html: '<span class="glyphicon glyphicon-trash"></span>'
+    },
+    save: {
+      class: 'btn btn-sm btn-success',
+      html: 'Save'
+    },
+    cancel: {
+      class: 'btn btn-sm btn-danger',
+      html: 'Cancel'
     }
+  },
+  columns: {
+    identifier: [0, 'id'],
+    editable: [[1, 'nickname'], [2, 'firstname'], [3, 'lastname']]
+  }
 });
 ```
 
