@@ -24,7 +24,6 @@ The following hooks are available:
 
 ## Examples
 See demo page with the examples below on this link:
-
 http://markcell.github.io/jQuery-Tabledit
 
 ```js
