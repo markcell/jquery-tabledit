@@ -1,16 +1,305 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>jQuery-Tabledit</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400,700'>
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css?v=3.3.2">
+        <link rel="stylesheet" href="assets/css/bootstrap.theme.min.css?v=3.3.2">
+        <style>
+            body {
+                font-family: 'Open Sans', sans-serif;
+            }
+            textarea:focus,
+            input:focus,
+            button:focus,
+            a:focus {
+                outline: none !important;
+            }
+            .container {
+                max-width: 970px;
+            }
+            .form-control {
+                border-radius: 0;
+            }
+            .table > thead > tr > th {
+                text-transform: uppercase;
+            }
+            .table > thead > tr > th,
+            .table > tbody > tr > th,
+            .table > tfoot > tr > th,
+            .table > thead > tr > td,
+            .table > tbody > tr > td,
+            .table > tfoot > tr > td {
+                vertical-align: middle;
+            }
+        </style>
     </head>
     <body>
-        <div>TODO write content</div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-header">
+                        <h2>jQuery-Tabledit <small>v1.1.0</small></h2>
+                    </div>
+                    <div class="alert alert-warning">The url "example.php" does not exist. When attempting to submit the changes, the table row turns red. This is what happen when there is trouble in the ajax request.</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-header">
+                        <h3>Example #1</h3>
+                    </div>
+                    <p class="help-block">Inline edit like a spreadsheet on two columns only.</p>
+                    <table class="table table-striped table-bordered" id="example1">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nickname</th>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>markcell</td>
+                                <td>Celso</td>
+                                <td>Marques</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>dotz</td>
+                                <td>Márcio</td>
+                                <td>Quental</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>zikospeed</td>
+                                <td>António</td>
+                                <td>Figueiredo</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-header">
+                        <h3>Example #2</h3>
+                    </div>
+                    <p class="help-block">Inline edit like a spreadsheet with double click and "select" instead of text input.</p>
+                    <table class="table table-striped table-bordered" id="example2">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Car</th>
+                                <th>Color</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Ferrari</td>
+                                <td>Red</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Lotus</td>
+                                <td>Green</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>porsche</td>
+                                <td>Blue</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-header">
+                        <h3>Example #3</h3>
+                    </div>
+                    <p class="help-block">Add toolbox column with edit and remove buttons.</p>
+                    <table class="table table-striped table-bordered" id="example3">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nickname</th>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>markcell</td>
+                                <td>Celso</td>
+                                <td>Marques</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>dotz</td>
+                                <td>Márcio</td>
+                                <td>Quental</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>zikospeed</td>
+                                <td>António</td>
+                                <td>Figueiredo</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-header">
+                        <h3>Example #4</h3>
+                    </div>
+                    <p class="help-block">Inline edit like a spreadsheet and add toolbox column with remove button only.</p>
+                    <table class="table table-striped table-bordered" id="example4">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Car</th>
+                                <th>Color</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Ferrari</td>
+                                <td>Red</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Lotus</td>
+                                <td>Green</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>porsche</td>
+                                <td>Blue</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-header">
+                        <h3>Example #5</h3>
+                    </div>
+                    <p class="help-block">Toolbox column with custom buttons.</p>
+                    <table class="table table-striped table-bordered" id="example5">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nickname</th>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>markcell</td>
+                                <td>Celso</td>
+                                <td>Marques</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>dotz</td>
+                                <td>Márcio</td>
+                                <td>Quental</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>zikospeed</td>
+                                <td>António</td>
+                                <td>Figueiredo</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/tabledit.min.js"></script>
+        <script>
+            // Example #1
+            $('#example1').Tabledit({
+                url: 'example.php',
+                editButton: false,
+                removeButton: false,
+                columns: {
+                    identifier: [0, 'id'],
+                    editable: [[2, 'firstname'], [3, 'lastname']]
+                }
+            });
+            // Example #2
+            $('#example2').Tabledit({
+                url: 'example.php',
+                eventType: 'dblclick',
+                editButton: false,
+                removeButton: false,
+                hideIdentifier: true,
+                textSelection: false,
+                columns: {
+                    identifier: [0, 'id'],
+                    editable: [[1, 'car'], [2, 'color', '{"1": "Red", "2": "Green", "3": "Blue"}']]
+                }
+            });
+            // Example #3
+            $('#example3').Tabledit({
+                url: 'example.php',
+                columns: {
+                    identifier: [0, 'id'],
+                    editable: [[1, 'nickname'], [2, 'firstname'], [3, 'lastname']]
+                }
+            });
+            // Example #4
+            $('#example4').Tabledit({
+                url: 'example.php',
+                editButton: false,
+                hideIdentifier: true,
+                columns: {
+                    identifier: [0, 'id'],
+                    editable: [[1, 'car'], [2, 'color', '{"1": "Red", "2": "Green", "3": "Blue"}']]
+                }
+            });
+            // Example #5
+            $('#example5').Tabledit({
+                url: 'example.php',
+                removeButton: false,
+                buttons: {
+                    edit: {
+                        class: 'btn btn-sm btn-primary',
+                        html: 'Edit'
+                    },
+                    remove: {
+                        class: 'btn btn-sm btn-danger',
+                        html: '<span class="glyphicon glyphicon-trash"></span>'
+                    },
+                    save: {
+                        class: 'btn btn-sm btn-success',
+                        html: 'Save'
+                    },
+                    cancel: {
+                        class: 'btn btn-sm btn-danger',
+                        html: 'Cancel'
+                    }
+                },
+                columns: {
+                    identifier: [0, 'id'],
+                    editable: [[1, 'nickname'], [2, 'firstname'], [3, 'lastname']]
+                }
+            });
+        </script>
     </body>
 </html>
