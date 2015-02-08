@@ -3,24 +3,24 @@ Inline editor for HTML tables compatible with Bootstrap.
 
 ## Options
 The following options are supported:
-* url: link to server script (default = window.location.href)
-* inputClass: class for form inputs (default = 'form-control input-sm')
-* dangerClass: class for row when ajax request fails (default = 'danger')
-* warningClass: class for row when save changes (default = 'warning')
-* mutedClass: class for row when is removed (default = 'text-muted')
-* eventType: trigger to change for edit mode (default = 'click')
-* confirmText: text to append on remove button to confirm action (default = ' &nbsp; Confirm')
-* hideIdentifier: hide the column that has the identifier (default = false)
-* textSelection: enable text selection on editable columns (default = true)
-* editButton: activate edit button instead of spreadsheet style (default = true)
-* removeButton: activate remove button (default = true)
+* __url:__ link to server script (default = window.location.href)
+* __inputClass:__ class for form inputs (default = 'form-control input-sm')
+* __dangerClass:__ class for row when ajax request fails (default = 'danger')
+* __warningClass:__ class for row when save changes (default = 'warning')
+* __mutedClass:__ class for row when is removed (default = 'text-muted')
+* __eventType:__ trigger to change for edit mode (default = 'click')
+* __confirmText:__ text to append on remove button to confirm action (default = ' &nbsp; Confirm')
+* __hideIdentifier:__ hide the column that has the identifier (default = false)
+* __textSelection:__ enable text selection on editable columns (default = true)
+* __editButton:__ activate edit button instead of spreadsheet style (default = true)
+* __removeButton:__ activate remove button (default = true)
 
 ## Hooks
 The following hooks are available:
-* onDraw(): executed after draw the structure
-* onSuccess(data, textStatus, jqXHR): executed when the ajax request is completed
-* onFail(jqXHR, textStatus, errorThrown): executed when occurred an error on ajax request
-* onAlways(): executed whenever there is an ajax request
+* __onDraw():__ executed after draw the structure
+* __onSuccess(data, textStatus, jqXHR):__ executed when the ajax request is completed
+* __onFail(jqXHR, textStatus, errorThrown):__ executed when occurred an error on ajax request
+* __onAlways():__ executed whenever there is an ajax request
 
 ## Examples
 See demo page with the examples below on this link: 
