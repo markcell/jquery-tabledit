@@ -37,6 +37,9 @@ $('#example1').Tabledit({
         editable: [[2, 'firstname'], [3, 'lastname']]
     }
 });
+```
+
+```js
 // Example #2
 $('#example2').Tabledit({
     url: 'example.php',
@@ -50,6 +53,9 @@ $('#example2').Tabledit({
         editable: [[1, 'car'], [2, 'color', '{"1": "Red", "2": "Green", "3": "Blue"}']]
     }
 });
+```
+
+```js
 // Example #3
 $('#example3').Tabledit({
     url: 'example.php',
@@ -58,6 +64,9 @@ $('#example3').Tabledit({
         editable: [[1, 'nickname'], [2, 'firstname'], [3, 'lastname']]
     }
 });
+```
+
+```js
 // Example #4
 $('#example4').Tabledit({
     url: 'example.php',
@@ -68,6 +77,9 @@ $('#example4').Tabledit({
         editable: [[1, 'car'], [2, 'color', '{"1": "Red", "2": "Green", "3": "Blue"}']]
     }
 });
+```
+
+```js
 // Example #5
 $('#example5').Tabledit({
     url: 'example.php',
