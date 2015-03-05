@@ -1,12 +1,12 @@
 /*!
- * Tabledit v1.1.0 (https://github.com/markcell/jQuery-Tabledit)
+ * Tabledit v1.1.1 (https://github.com/markcell/jQuery-Tabledit)
  * Copyright (c) 2015 Celso Marques
  * Licensed under MIT (https://github.com/markcell/jQuery-Tabledit/blob/master/LICENSE)
  */
 
 /**
  * @description Inline editor for HTML tables
- * @version 1.1.0
+ * @version 1.1.1
  * @author Celso Marques
  */
 
@@ -73,7 +73,7 @@ if (typeof jQuery === 'undefined') {
         var Draw = {
             form: function(url) {
                 // Create form wrapped on table if not exists.
-                if (!$table.parent('form.tabledit-form').length > 0) {
+                if (!$table.parents('form.tabledit-form').length > 0) {
                     $table.wrap('<form action="' + url + '" method="post" class="tabledit-form"></form>');
                 }
             },

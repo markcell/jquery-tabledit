@@ -118,6 +118,9 @@ $('#example5').Tabledit({
 ```
 
 ## Changelog
+v1.1.1 (2015/03/05):
+* Fixed bug when creates the form wrapped on table.
+
 v1.1.0 (2015/02/08):
 * Added toolbox column with edit and remove buttons.
 * Added effect on table row when ajax request fails.
