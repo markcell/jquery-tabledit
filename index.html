@@ -41,7 +41,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-header">
-                        <h2>jQuery-Tabledit <small>v1.1.0 <a href="https://github.com/markcell/jQuery-Tabledit">GitHub Repository</a></small></h2>
+                        <h2>jQuery-Tabledit <small>v1.2.0 <a href="https://github.com/markcell/jQuery-Tabledit">GitHub Repository</a></small></h2>
                     </div>
                     <div class="alert alert-warning">The url "example.php" does not exist. When attempting to submit the changes, the table row turns red. This is what happen when there is trouble in the ajax request.</div>
                 </div>
@@ -236,7 +236,7 @@
             $('#example1').Tabledit({
                 url: 'example.php',
                 editButton: false,
-                removeButton: false,
+                deleteButton: false,
                 columns: {
                     identifier: [0, 'id'],
                     editable: [[2, 'firstname'], [3, 'lastname']]
@@ -247,9 +247,8 @@
                 url: 'example.php',
                 eventType: 'dblclick',
                 editButton: false,
-                removeButton: false,
+                deleteButton: false,
                 hideIdentifier: true,
-                textSelection: false,
                 columns: {
                     identifier: [0, 'id'],
                     editable: [[1, 'car'], [2, 'color', '{"1": "Red", "2": "Green", "3": "Blue"}']]
@@ -267,6 +266,7 @@
             $('#example4').Tabledit({
                 url: 'example.php',
                 editButton: false,
+                restoreButton: false,
                 hideIdentifier: true,
                 columns: {
                     identifier: [0, 'id'],
@@ -276,23 +276,30 @@
             // Example #5
             $('#example5').Tabledit({
                 url: 'example.php',
-                removeButton: false,
+                deleteButton: false,
                 buttons: {
                     edit: {
                         class: 'btn btn-sm btn-primary',
-                        html: 'Edit'
+                        html: '<span class="glyphicon glyphicon-pencil"></span>&nbsp; Edit',
+                        action: 'edit'
                     },
-                    remove: {
-                        class: 'btn btn-sm btn-danger',
-                        html: '<span class="glyphicon glyphicon-trash"></span>'
+                    delete: {
+                        class: 'btn btn-sm btn-primary',
+                        html: '<span class="glyphicon glyphicon-trash"></span>&nbsp; Delete',
+                        action: 'delete'
                     },
                     save: {
                         class: 'btn btn-sm btn-success',
                         html: 'Save'
                     },
-                    cancel: {
+                    restore: {
+                        class: 'btn btn-sm btn-warning',
+                        html: 'Restore',
+                        action: 'restore'
+                    },
+                    confirm: {
                         class: 'btn btn-sm btn-danger',
-                        html: 'Cancel'
+                        html: 'Confirm'
                     }
                 },
                 columns: {
