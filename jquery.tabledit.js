@@ -354,6 +354,7 @@ if (typeof jQuery === 'undefined') {
                 if (action === settings.buttons.delete.action) {
                     $lastDeletedRow.removeClass(settings.mutedClass).addClass(settings.dangerClass);
                     $lastDeletedRow.find('.tabledit-toolbar button').attr('disabled', false);
+                    $lastDeletedRow.find('.tabledit-toolbar .tabledit-restore-button').hide();
                 } else if (action === settings.buttons.edit.action) {
                     $lastEditedRow.addClass(settings.dangerClass);
                 }
