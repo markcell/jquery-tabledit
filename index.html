@@ -233,14 +233,12 @@
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/tabledit.min.js"></script>
         <script>
-            // Example #1
+            // Example #1            
             $('#example1').Tabledit({
                 url: 'example.php',
-                editButton: false,
-                deleteButton: false,
                 columns: {
                     identifier: [0, 'id'],
-                    editable: [[2, 'firstname'], [3, 'lastname']]
+                    editable: [[1, 'nickname'], [2, 'firstname'], [3, 'lastname']]
                 }
             });
             // Example #2
@@ -258,9 +256,11 @@
             // Example #3
             $('#example3').Tabledit({
                 url: 'example.php',
+                editButton: false,
+                deleteButton: false,
                 columns: {
                     identifier: [0, 'id'],
-                    editable: [[1, 'nickname'], [2, 'firstname'], [3, 'lastname']]
+                    editable: [[2, 'firstname'], [3, 'lastname']]
                 }
             });
             // Example #4
