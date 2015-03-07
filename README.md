@@ -1,19 +1,21 @@
-# jQuery-Tabledit [![GitHub version](https://badge.fury.io/gh/markcell%2FjQuery-Tabledit.svg)](http://badge.fury.io/gh/markcell%2FjQuery-Tabledit)
+# jQuery-Tabledit v1.2.0
 Inline editor for HTML tables compatible with Bootstrap.
 
 ## Options
 The following options are supported:
 * __url:__ link to server script (default = window.location.href)
 * __inputClass:__ class for form inputs (default = 'form-control input-sm')
+* __toolbarClass:__ class for buttons toolbar (default = 'btn-toolbar')
+* __groupClass:__ class for buttons group (default = btn-group btn-group-sm)
 * __dangerClass:__ class for row when ajax request fails (default = 'danger')
 * __warningClass:__ class for row when save changes (default = 'warning')
-* __mutedClass:__ class for row when is removed (default = 'text-muted')
+* __mutedClass:__ class for row when is deleted (default = 'text-muted')
 * __eventType:__ trigger to change for edit mode (default = 'click')
-* __confirmText:__ text to append on remove button to confirm action (default = ' &nbsp; Confirm')
 * __hideIdentifier:__ hide the column that has the identifier (default = false)
-* __textSelection:__ enable text selection on editable columns (default = true)
 * __editButton:__ activate edit button instead of spreadsheet style (default = true)
-* __removeButton:__ activate remove button (default = true)
+* __deleteButton:__ activate delete button (default = true)
+* __saveButton:__ activate save button when click on edit button (default = true)
+* __restoreButton:__ activate restore button to undo delete action (default = true)
 
 ## Hooks
 The following hooks are available:
@@ -27,11 +29,14 @@ See demo page with the examples below on this link:
 http://markcell.github.io/jQuery-Tabledit
 
 ```js
-// Example #1
+/**
+ * Example #1
+ * Inline edit like a spreadsheet on two columns only.
+ */
 $('#example1').Tabledit({
   url: 'example.php',
   editButton: false,
-  removeButton: false,
+  deleteButton: false,
   columns: {
     // Column used to identify table row. 
     // [column_index, input_name]
@@ -44,14 +49,16 @@ $('#example1').Tabledit({
 ```
 
 ```js
-// Example #2
+/**
+ * Example #2
+ * Inline edit like a spreadsheet with double click and "select" instead of text input.
+ */
 $('#example2').Tabledit({
   url: 'example.php',
   eventType: 'dblclick',
   editButton: false,
-  removeButton: false,
+  deleteButton: false,
   hideIdentifier: true,
-  textSelection: false,
   columns: {
     // Column used to identify table row.
     // [column_index, input_name]
@@ -64,7 +71,10 @@ $('#example2').Tabledit({
 ```
 
 ```js
-// Example #3
+/**
+ * Example #3
+ * Add toolbar column with all buttons.
+ */
 $('#example3').Tabledit({
   url: 'example.php',
   columns: {
@@ -75,10 +85,14 @@ $('#example3').Tabledit({
 ```
 
 ```js
-// Example #4
+/**
+ * Example #4
+ * Inline edit like a spreadsheet and add toolbar column with delete button only.
+ */
 $('#example4').Tabledit({
   url: 'example.php',
   editButton: false,
+  restoreButton: false,
   hideIdentifier: true,
   columns: {
     identifier: [0, 'id'],
@@ -88,26 +102,36 @@ $('#example4').Tabledit({
 ```
 
 ```js
-// Example #5
+/**
+ * Example #5
+ * Toolbox column with custom buttons and edit button only.
+ */
 $('#example5').Tabledit({
   url: 'example.php',
-  removeButton: false,
+  deleteButton: false,
   buttons: {
     edit: {
       class: 'btn btn-sm btn-primary',
-      html: 'Edit'
+      html: '<span class="glyphicon glyphicon-pencil"></span>&nbsp; Edit',
+      action: 'edit'
     },
-    remove: {
-      class: 'btn btn-sm btn-danger',
-      html: '<span class="glyphicon glyphicon-trash"></span>'
+    delete: {
+      class: 'btn btn-sm btn-primary',
+      html: '<span class="glyphicon glyphicon-trash"></span>&nbsp; Delete',
+      action: 'delete'
     },
     save: {
       class: 'btn btn-sm btn-success',
       html: 'Save'
     },
-    cancel: {
+    restore: {
+      class: 'btn btn-sm btn-warning',
+      html: 'Restore',
+      action: 'restore'
+    },
+    confirm: {
       class: 'btn btn-sm btn-danger',
-      html: 'Cancel'
+      html: 'Confirm'
     }
   },
   columns: {
@@ -118,6 +142,19 @@ $('#example5').Tabledit({
 ```
 
 ## Changelog
+v1.2.0 (2015/03/07):
+* Added 'saveButton' and 'restoreButton' options.
+* Added 'toolbarClass' and 'groupClass' options.
+* Changed 'removeButton' option to 'deleteButton'.
+* Changed 'remove' action to 'delete'.
+* Removed 'textSelection' option, using CSS to prevent the text is selected with double click.
+* Removed 'confirmText' option, because a button was created to confirm the removal.
+* Removed form wrapped on table, because now it serialize inputs instead of the form.
+* In 'buttons' option now have a new child 'action' to change name of action input ('edit', 'delete' and 'restore').
+* Redesign of toolbox and changed name to toolbar.
+* Minor code improvement.
+* Fixed some bugs.
+
 v1.1.1 (2015/03/05):
 * Fixed bug when creates the form wrapped on table.
 
