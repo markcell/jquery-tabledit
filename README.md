@@ -31,19 +31,13 @@ http://markcell.github.io/jQuery-Tabledit
 ```js
 /**
  * Example #1
- * Inline edit like a spreadsheet on two columns only.
+ * Add toolbar column with all buttons.
  */
 $('#example1').Tabledit({
   url: 'example.php',
-  editButton: false,
-  deleteButton: false,
   columns: {
-    // Column used to identify table row. 
-    // [column_index, input_name]
     identifier: [0, 'id'],
-    // Columns to transform in editable cells.
-    // [[column_index, input_name], [column_index, input_name]]
-    editable: [[2, 'firstname'], [3, 'lastname']]
+    editable: [[1, 'nickname'], [2, 'firstname'], [3, 'lastname']]
   }
 });
 ```
@@ -73,13 +67,19 @@ $('#example2').Tabledit({
 ```js
 /**
  * Example #3
- * Add toolbar column with all buttons.
+ * Inline edit like a spreadsheet on two columns only.
  */
 $('#example3').Tabledit({
   url: 'example.php',
+  editButton: false,
+  deleteButton: false,
   columns: {
+    // Column used to identify table row. 
+    // [column_index, input_name]
     identifier: [0, 'id'],
-    editable: [[1, 'nickname'], [2, 'firstname'], [3, 'lastname']]
+    // Columns to transform in editable cells.
+    // [[column_index, input_name], [column_index, input_name]]
+    editable: [[2, 'firstname'], [3, 'lastname']]
   }
 });
 ```
