@@ -45,7 +45,7 @@ $('#example1').Tabledit({
 ```js
 /**
  * Example #2
- * Inline edit like a spreadsheet with double click and "select" instead of text input.
+ * Inline edit like a spreadsheet with dblclick and "select" instead of text input.
  */
 $('#example2').Tabledit({
   url: 'example.php',
@@ -142,34 +142,7 @@ $('#example5').Tabledit({
 ```
 
 ## Changelog
-v1.2.0 (2015/03/07):
-* Added 'saveButton' and 'restoreButton' options.
-* Added 'toolbarClass' and 'groupClass' options.
-* Changed 'removeButton' option to 'deleteButton'.
-* Changed 'remove' action to 'delete'.
-* Removed 'textSelection' option, using CSS to prevent the text is selected with double click.
-* Removed 'confirmText' option, because a button was created to confirm the removal.
-* Removed form wrapped on table, because now it serialize inputs instead of the form.
-* In 'buttons' option now have a new child 'action' to change name of action input ('edit', 'delete' and 'restore').
-* Redesign of toolbox and changed name to toolbar.
-* Minor code improvement.
-* Fixed some bugs.
-
-v1.1.1 (2015/03/05):
-* Fixed bug when creates the form wrapped on table.
-
-v1.1.0 (2015/02/08):
-* Added toolbox column with edit and remove buttons.
-* Added effect on table row when ajax request fails.
-* Added effect on table row when changes are saved with success.
-* Added 'onAlways()' hook, that is executed whenever there is an ajax request.
-* Change 'onComplete(response)' hook to 'onSuccess(data, textStatus, jqXHR)'.
-* Change 'onError()' hook to 'onFail(jqXHR, textStatus, errorThrown)'.
-* Fixed some minor bugs.
-* Minor code improvement.
-
-v1.0.0 (2015/01/30):
-* Initial release.
+See CHANGELOG.md file.
 
 ## License
 Code released under the MIT license.
