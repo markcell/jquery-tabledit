@@ -3,7 +3,7 @@ v1.2.1 (2015/03/10)
 - Improved the select element
 - Does not add hidden save button if the 'editButton' option is false
 - Does not add hidden restore button if the 'deleteButton' option is false
-- Added a new option 'autoFocus' to enable or not the focus in the first input when click in save button
+- Added a new option 'autoFocus' to enable or not the focus in the first input when click in edit button
 - Added a new hook 'onAjax(action, serialize)' that runs before the ajax request
 
 v1.2.0 (2015/03/07)
