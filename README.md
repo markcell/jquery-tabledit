@@ -1,4 +1,4 @@
-# jQuery-Tabledit v1.2.0
+# jQuery-Tabledit v1.2.1
 Inline editor for HTML tables compatible with Bootstrap.
 
 ## Options
@@ -12,6 +12,7 @@ The following options are supported:
 * __mutedClass:__ class for row when is deleted (default = 'text-muted')
 * __eventType:__ trigger to change for edit mode (default = 'click')
 * __hideIdentifier:__ hide the column that has the identifier (default = false)
+* __autoFocus:__ activate focus on first input of a row when click in save button (default = true)
 * __editButton:__ activate edit button instead of spreadsheet style (default = true)
 * __deleteButton:__ activate delete button (default = true)
 * __saveButton:__ activate save button when click on edit button (default = true)
@@ -23,6 +24,7 @@ The following hooks are available:
 * __onSuccess(data, textStatus, jqXHR):__ executed when the ajax request is completed
 * __onFail(jqXHR, textStatus, errorThrown):__ executed when occurred an error on ajax request
 * __onAlways():__ executed whenever there is an ajax request
+* __onAjax(action, serialize):__ executed before the ajax request
 
 ## Examples
 See demo page with the examples below on this link:
