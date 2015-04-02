@@ -16,7 +16,7 @@ Edit the pre-selected columns with button to save or delete a row with confirmat
 
 You must choose a table column to use as identifier column and choose the ones you want to turn into editable columns.
 
-### Compatible with Bootstrap
+### Compatible with Bootstrap 
 
 It is used some Bootstrap components, glyphicons and CSS classes.
 
