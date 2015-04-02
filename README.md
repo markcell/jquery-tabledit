@@ -1,8 +1,6 @@
 # jQuery-Tabledit v1.2.2
 Inline editor for HTML tables compatible with Bootstrap.
 
-http://markcell.github.io/jQuery-Tabledit
-
 
 ## Examples
 http://markcell.github.io/jQuery-Tabledit/#examples
