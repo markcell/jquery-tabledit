@@ -1,0 +1,39 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#home">jQuery-Tabledit</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#documentation">Documentation</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown" id="theme-button">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Theme &nbsp;<i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="assets/css/bootstrap.min.css">Default</a></li>
+                        <li><a href="assets/css/bootstrap-flatly.min.css">Flatly</a></li>
+                        <li><a href="assets/css/bootstrap-yeti.min.css">Yeti</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://github.com/markcell/jQuery-Tabledit" target="_blank"><i class="fa fa-github fa-lg"></i></a></li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<script>   
+    $('#theme-button ul li a').on('click', function(event) {
+        event.preventDefault();
+        $('#theme-file').attr('href', $(this).attr('href'));
+    });
+</script>

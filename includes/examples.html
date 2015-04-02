@@ -1,0 +1,597 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header">
+            <h3>Examples</h3>
+        </div>
+        <div class="alert alert-warning">
+            <i class="fa fa-warning fa-lg"></i>&nbsp;
+            The file <strong>example.php</strong> does not exist, so sending the ajax request will fail.
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header">
+            <h4>Example #1</h4>
+        </div>
+        <p class="help-block">Add toolbar column with edit and delete buttons.</p>
+        <div role="tabpanel">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#table1" aria-controls="table1" role="tab" data-toggle="tab">Table</a></li>
+                <li role="presentation"><a href="#javascript1" aria-controls="javascript1" role="tab" data-toggle="tab">JavaScript</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="table1">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered" id="example1">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nickname</th>
+                                    <th>Firstname</th>
+                                    <th>Lastname</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>markcell</td>
+                                    <td>Celso</td>
+                                    <td>Marques</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>dotz</td>
+                                    <td>Márcio</td>
+                                    <td>Quental</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>zikospeed</td>
+                                    <td>António</td>
+                                    <td>Figueiredo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="javascript1">
+<pre class="prettyprint">
+$('#example1').Tabledit({
+    url: 'example.php',
+    columns: {
+        identifier: [0, 'id'],
+        editable: [[1, 'nickname'], [2, 'firstname'], [3, 'lastname']]
+    }
+});
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header">
+            <h4>Example #2</h4>
+        </div>
+        <p class="help-block">Inline edit like a spreadsheet with double click and "select" instead of text input.</p>
+        <div role="tabpanel">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#table2" aria-controls="table2" role="tab" data-toggle="tab">Table</a></li>
+                <li role="presentation"><a href="#javascript2" aria-controls="javascript2" role="tab" data-toggle="tab">JavaScript</a></li>
+                <li role="presentation"><a href="#css2" aria-controls="css2" role="tab" data-toggle="tab">CSS</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="table2">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered user-select-none" id="example2">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Car</th>
+                                    <th>Color</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Ferrari</td>
+                                    <td>Red</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Lotus</td>
+                                    <td>Green</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>porsche</td>
+                                    <td>Blue</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="javascript2">
+<pre class="prettyprint">
+$('#example2').Tabledit({
+    url: 'example.php',
+    eventType: 'dblclick',
+    editButton: false,
+    columns: {
+        identifier: [0, 'id'],
+        editable: [[1, 'car'], [2, 'color', '{"1": "Red", "2": "Green", "3": "Blue"}']]
+    }
+});
+</pre>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="css2">
+<pre class="prettyprint">
+.table.user-select-none {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header">
+            <h4>Example #3</h4>
+        </div>
+        <p class="help-block">Inline edit like a spreadsheet on two columns only and without identifier column.</p>
+        <div role="tabpanel">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#table3" aria-controls="table3" role="tab" data-toggle="tab">Table</a></li>
+                <li role="presentation"><a href="#javascript3" aria-controls="javascript3" role="tab" data-toggle="tab">JavaScript</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="table3">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered" id="example3">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nickname</th>
+                                    <th>Firstname</th>
+                                    <th>Lastname</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>markcell</td>
+                                    <td>Celso</td>
+                                    <td>Marques</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>dotz</td>
+                                    <td>Márcio</td>
+                                    <td>Quental</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>zikospeed</td>
+                                    <td>António</td>
+                                    <td>Figueiredo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="javascript3">
+<pre class="prettyprint">
+$('#example3').Tabledit({
+    url: 'example.php',
+    editButton: false,
+    deleteButton: false,
+    hideIdentifier: true,
+    columns: {
+        identifier: [0, 'id'],
+        editable: [[2, 'firstname'], [3, 'lastname']]
+    }
+});
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header">
+            <h4>Example #4</h4>
+        </div>
+        <p class="help-block">Inline edit like a spreadsheet, toolbar column with edit button only and without focus on first input.</p>
+        <div role="tabpanel">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#table4" aria-controls="table4" role="tab" data-toggle="tab">Table</a></li>
+                <li role="presentation"><a href="#javascript4" aria-controls="javascript4" role="tab" data-toggle="tab">JavaScript</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="table4">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered" id="example4">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Car</th>
+                                    <th>Color</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Ferrari</td>
+                                    <td>Red</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Lotus</td>
+                                    <td>Green</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Porsche</td>
+                                    <td>Blue</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="javascript4">
+<pre class="prettyprint">
+$('#example4').Tabledit({
+    url: 'example.php',
+    deleteButton: false,
+    saveButton: false,
+    autoFocus: false,
+    buttons: {
+        edit: {
+            class: 'btn btn-sm btn-primary',
+            html: '&lt;span class="glyphicon glyphicon-pencil"&gt;&lt;/span&gt; &amp;nbsp EDIT',
+            action: 'edit'
+        }
+    },
+    columns: {
+        identifier: [0, 'id'],
+        editable: [[1, 'car'], [2, 'color']]
+    }
+});
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header">
+            <h4>Example #5</h4>
+        </div>
+        <p class="help-block">Toolbar with delete button only and other name for row identifier attribute.</p>
+        <div role="tabpanel">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#table5" aria-controls="table5" role="tab" data-toggle="tab">Table</a></li>
+                <li role="presentation"><a href="#javascript5" aria-controls="javascript5" role="tab" data-toggle="tab">JavaScript</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="table5">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered" id="example5">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nickname</th>
+                                    <th>Firstname</th>
+                                    <th>Lastname</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>markcell</td>
+                                    <td>Celso</td>
+                                    <td>Marques</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>dotz</td>
+                                    <td>Márcio</td>
+                                    <td>Quental</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>zikospeed</td>
+                                    <td>António</td>
+                                    <td>Figueiredo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            <div role="tabpanel" class="tab-pane fade" id="javascript5">
+<pre class="prettyprint">
+$('#example5').Tabledit({
+    url: 'example.php',
+    rowIdentifier: 'data-id',
+    editButton: false,
+    restoreButton: false,
+    buttons: {
+        delete: {
+            class: 'btn btn-sm btn-danger',
+            html: '&lt;span class="glyphicon glyphicon-trash"&gt;&lt;/span&gt; &amp;nbsp DELETE',
+            action: 'delete'
+        },
+        confirm: {
+            class: 'btn btn-sm btn-default',
+            html: 'Are you sure?'
+        }
+    },
+    columns: {
+        identifier: [0, 'id'],
+        editable: [[1, 'nickname'], [2, 'firstname'], [3, 'lastname']]
+    }
+});
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header">
+            <h4>Example #6</h4>
+        </div>
+        <p class="help-block">Log all hooks and parameters to console.</p>
+        <div role="tabpanel">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#table6" aria-controls="table6" role="tab" data-toggle="tab">Table</a></li>
+                <li role="presentation"><a href="#javascript6" aria-controls="javascript6" role="tab" data-toggle="tab">JavaScript</a></li>
+                <li role="presentation"><a href="#php6" aria-controls="php6" role="tab" data-toggle="tab">PHP</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="table6">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered" id="example6">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Avatar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>markcell</td>
+                                    <td>markcell@example.com</td>
+                                    <td>Iron Man</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>dotz</td>
+                                    <td>dotz@example.com</td>
+                                    <td>Captain America</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>zikospeed</td>
+                                    <td>zikospeed@example.com</td>
+                                    <td>Black Widow</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            <div role="tabpanel" class="tab-pane fade" id="javascript6">
+<pre class="prettyprint">
+$('#example6').Tabledit({
+    url: 'example.php',
+    columns: {
+        identifier: [0, 'id'],
+        editable: [[1, 'username'], [2, 'email'], [3, 'avatar', '{"1": "Black Widow", "2": "Captain America", "3": "Iron Man"}']]
+    },
+    onDraw: function() {
+        console.log('onDraw()');
+    },
+    onSuccess: function(data, textStatus, jqXHR) {
+        console.log('onSuccess(data, textStatus, jqXHR)');
+        console.log(data);
+        console.log(textStatus);
+        console.log(jqXHR);
+    },
+    onFail: function(jqXHR, textStatus, errorThrown) {
+        console.log('onFail(jqXHR, textStatus, errorThrown)');
+        console.log(jqXHR);
+        console.log(textStatus);
+        console.log(errorThrown);
+    },
+    onAlways: function() {
+        console.log('onAlways()');
+    },
+    onAjax: function(action, serialize) {
+        console.log('onAjax(action, serialize)');
+        console.log(action);
+        console.log(serialize);
+    }
+});
+</pre>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="php6">
+<pre class="prettyprint">
+&lt;?php
+
+// Basic example of PHP script to handle with jQuery-Tabledit plug-in.
+// Note that is just an example. Should take precautions such as filtering the input data.
+
+header('Content-Type: application/json');
+
+$input = filter_input_array(INPUT_POST);
+
+$mysqli = new mysqli('localhost', 'user', 'password', 'database');
+
+if (mysqli_connect_errno()) {
+  echo json_encode(array('mysqli' => 'Failed to connect to MySQL: ' . mysqli_connect_error()));
+  exit;
+}
+
+if ($input['action'] == 'edit') {
+    $mysqli->query("UPDATE users SET username='" . $input['username'] . "', email='" . $input['email'] . "', avatar='" . $input['avatar'] . "' WHERE id='" . $input['id'] . "'");
+} else if ($input['action'] == 'delete') {
+    $mysqli->query("UPDATE users SET deleted=1 WHERE id='" . $input['id'] . "'");
+} else if ($input['action'] == 'restore') {
+    $mysqli->query("UPDATE users SET deleted=0 WHERE id='" . $input['id'] . "'");
+}
+
+mysqli_close($mysqli);
+
+echo json_encode($input);
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        // Example #1
+        $('#example1').Tabledit({
+            url: 'example.php',
+            columns: {
+                identifier: [0, 'id'],
+                editable: [[1, 'nickname'], [2, 'firstname'], [3, 'lastname']]
+            }
+        });
+
+        // Example #2
+        $('#example2').Tabledit({
+            url: 'example.php',
+            eventType: 'dblclick',
+            editButton: false,
+            columns: {
+                identifier: [0, 'id'],
+                editable: [[1, 'car'], [2, 'color', '{"1": "Red", "2": "Green", "3": "Blue"}']]
+            }
+        });
+
+        // Example #3
+        $('#example3').Tabledit({
+            url: 'example.php',
+            editButton: false,
+            deleteButton: false,
+            hideIdentifier: true,
+            columns: {
+                identifier: [0, 'id'],
+                editable: [[2, 'firstname'], [3, 'lastname']]
+            }
+        });
+
+        // Example #4
+        $('#example4').Tabledit({
+            url: 'example.php',
+            deleteButton: false,
+            saveButton: false,
+            autoFocus: false,
+            buttons: {
+                edit: {
+                    class: 'btn btn-sm btn-primary',
+                    html: '<span class="glyphicon glyphicon-pencil"></span> &nbsp; EDIT',
+                    action: 'edit'
+                }
+            },
+            columns: {
+                identifier: [0, 'id'],
+                editable: [[1, 'car'], [2, 'color']]
+            }
+        });
+
+        // Example #5
+        $('#example5').Tabledit({
+            url: 'example.php',
+            rowIdentifier: 'data-id',
+            editButton: false,
+            restoreButton: false,
+            buttons: {
+                delete: {
+                    class: 'btn btn-sm btn-danger',
+                    html: '<span class="glyphicon glyphicon-trash"></span> &nbsp; DELETE',
+                    action: 'delete'
+                },
+                confirm: {
+                    class: 'btn btn-sm btn-default',
+                    html: 'Are you sure?'
+                }
+            },
+            columns: {
+                identifier: [0, 'id'],
+                editable: [[1, 'nickname'], [2, 'firstname'], [3, 'lastname']]
+            }
+        });
+
+        // Example #6
+        $('#example6').Tabledit({
+            url: 'example.php',
+            columns: {
+                identifier: [0, 'id'],
+                editable: [[1, 'username'], [2, 'email'], [3, 'avatar', '{"1": "Black Widow", "2": "Captain America", "3": "Iron Man"}']]
+            },
+            onDraw: function() {
+                console.log('onDraw()');
+            },
+            onSuccess: function(data, textStatus, jqXHR) {
+                console.log('onSuccess(data, textStatus, jqXHR)');
+                console.log(data);
+                console.log(textStatus);
+                console.log(jqXHR);
+            },
+            onFail: function(jqXHR, textStatus, errorThrown) {
+                console.log('onFail(jqXHR, textStatus, errorThrown)');
+                console.log(jqXHR);
+                console.log(textStatus);
+                console.log(errorThrown);
+            },
+            onAlways: function() {
+                console.log('onAlways()');
+            },
+            onAjax: function(action, serialize) {
+                console.log('onAjax(action, serialize)');
+                console.log(action);
+                console.log(serialize);
+            }
+        });
+
+        prettyPrint();
+        
+    });
+</script>
