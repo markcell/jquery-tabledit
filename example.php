@@ -5,6 +5,8 @@
 
 header('Content-Type: application/json');
 
+$input = filter_input_array(INPUT_POST);
+
 $mysqli = new mysqli('localhost', 'user', 'password', 'database');
 
 if (mysqli_connect_errno()) {
@@ -12,16 +14,14 @@ if (mysqli_connect_errno()) {
   exit;
 }
 
-if ($_POST['action'] == 'edit') {
-    $mysqli->query("UPDATE users SET nickname='" . $_POST['nickname'] . "', firstname='" . $_POST['firstname'] . "', lastname='" . $_POST['lastname'] . "' WHERE id='" . $_POST['id'] . "'");
-} else if ($_POST['action'] == 'delete') {
-    $mysqli->query("UPDATE users SET deleted=1 WHERE id='" . $_POST['id'] . "'");
-} else if ($_POST['action'] == 'restore') {
-    $mysqli->query("UPDATE users SET deleted=0 WHERE id='" . $_POST['id'] . "'");
+if ($input['action'] === 'edit') {
+    $mysqli->query("UPDATE users SET username='" . $input['username'] . "', email='" . $input['email'] . "', avatar='" . $input['avatar'] . "' WHERE id='" . $input['id'] . "'");
+} else if ($input['action'] === 'delete') {
+    $mysqli->query("UPDATE users SET deleted=1 WHERE id='" . $input['id'] . "'");
+} else if ($input['action'] === 'restore') {
+    $mysqli->query("UPDATE users SET deleted=0 WHERE id='" . $input['id'] . "'");
 }
 
 mysqli_close($mysqli);
 
-echo json_encode($_POST);
-
-?>
+echo json_encode($input);
