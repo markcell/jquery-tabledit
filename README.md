@@ -4,23 +4,23 @@ Inline editor for HTML tables compatible with Bootstrap.
 
 ## Key Features
 
-### Inline Editor
+#### Inline Editor
 
 It is possible to edit inline like a spreadsheet or with buttons to change between edit and view mode.
 
-### Edit, Delete and Restore
+#### Edit, Delete and Restore
 
 Edit the pre-selected columns with button to save or delete a row with confirmation button and the possibility of restoring it.
 
-### Columns
+#### Columns
 
 You must choose a table column to use as identifier column and choose the ones you want to turn into editable columns.
 
-### Compatible with Bootstrap 
+#### Compatible with Bootstrap 
 
 It is used some Bootstrap components, glyphicons and CSS classes.
 
-### Customizable
+#### Customizable
 
 Possibility of changing the CSS classes and contents of buttons and other things.
 
