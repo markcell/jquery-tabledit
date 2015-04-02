@@ -1,12 +1,12 @@
 /*!
- * Tabledit v1.2.1 (https://github.com/markcell/jQuery-Tabledit)
+ * Tabledit v1.2.2 (https://github.com/markcell/jQuery-Tabledit)
  * Copyright (c) 2015 Celso Marques
  * Licensed under MIT (https://github.com/markcell/jQuery-Tabledit/blob/master/LICENSE)
  */
 
 /**
- * @description Inline editor for HTML tables
- * @version 1.2.1
+ * @description Inline editor for HTML tables compatible with Bootstrap
+ * @version 1.2.2
  * @author Celso Marques
  */
 
@@ -33,6 +33,7 @@ if (typeof jQuery === 'undefined') {
             warningClass: 'warning',
             mutedClass: 'text-muted',
             eventType: 'click',
+            rowIdentifier: 'id',
             hideIdentifier: false,
             autoFocus: true,
             editButton: true,
@@ -101,7 +102,7 @@ if (typeof jQuery === 'undefined') {
                         $(this).html(span + input);
 
                         // Add attribute "id" to table row.
-                        $(this).parent('tr').attr('id', $(this).text());
+                        $(this).parent('tr').attr(settings.rowIdentifier, $(this).text());
                     });
                 },
                 editable: function() {
@@ -270,7 +271,11 @@ if (typeof jQuery === 'undefined') {
             },
             submit: function(td) {
                 // Send AJAX request to server.
-                ajax(settings.buttons.edit.action);
+                var ajaxResult = ajax(settings.buttons.edit.action);
+
+                if (ajaxResult === false) {
+                    return;
+                }
 
                 $(td).each(function() {
                     // Get input element.
@@ -307,9 +312,16 @@ if (typeof jQuery === 'undefined') {
                 // Enable identifier hidden input.
                 $(td).parent('tr').find('input.tabledit-identifier').attr('disabled', false);
                 // Send AJAX request to server.
-                ajax(settings.buttons.delete.action);
+                var ajaxResult = ajax(settings.buttons.delete.action);
                 // Disable identifier hidden input.
                 $(td).parents('tr').find('input.tabledit-identifier').attr('disabled', true);
+
+                if (ajaxResult === false) {
+                    return;
+                }
+
+                // Add class "deleted" to row.
+                $(td).parent('tr').addClass('tabledit-deleted-row');
                 // Hide table row.
                 $(td).parent('tr').addClass(settings.mutedClass).find('.tabledit-toolbar button:not(.tabledit-restore-button)').attr('disabled', true);
                 // Show restore button.
@@ -331,9 +343,16 @@ if (typeof jQuery === 'undefined') {
                 // Enable identifier hidden input.
                 $(td).parent('tr').find('input.tabledit-identifier').attr('disabled', false);
                 // Send AJAX request to server.
-                ajax(settings.buttons.restore.action);
+                var ajaxResult = ajax(settings.buttons.restore.action);
                 // Disable identifier hidden input.
                 $(td).parents('tr').find('input.tabledit-identifier').attr('disabled', true);
+
+                if (ajaxResult === false) {
+                    return;
+                }
+
+                // Remove class "deleted" to row.
+                $(td).parent('tr').removeClass('tabledit-deleted-row');
                 // Hide table row.
                 $(td).parent('tr').removeClass(settings.mutedClass).find('.tabledit-toolbar button').attr('disabled', false);
                 // Hide restore button.
@@ -352,13 +371,18 @@ if (typeof jQuery === 'undefined') {
         {
             var serialize = $table.find('.tabledit-input').serialize() + '&action=' + action;
 
-            settings.onAjax(action, serialize);
+            var result = settings.onAjax(action, serialize);
+
+            if (result === false) {
+                return false;
+            }
 
             var jqXHR = $.post(settings.url, serialize, function(data, textStatus, jqXHR) {
                 if (action === settings.buttons.edit.action) {
                     $lastEditedRow.removeClass(settings.dangerClass).addClass(settings.warningClass);
                     setTimeout(function() {
-                        $lastEditedRow.removeClass(settings.warningClass);
+                        //$lastEditedRow.removeClass(settings.warningClass);
+                        $table.find('tr.' + settings.warningClass).removeClass(settings.warningClass);
                     }, 1400);
                 }
 
@@ -500,7 +524,7 @@ if (typeof jQuery === 'undefined') {
              *
              * @param {object} event
              */
-            $table.on(settings.eventType, 'td.tabledit-view-mode', function(event) {
+            $table.on(settings.eventType, 'tr:not(.tabledit-deleted-row) td.tabledit-view-mode', function(event) {
                 if (event.handled !== true) {
                     event.preventDefault();
 

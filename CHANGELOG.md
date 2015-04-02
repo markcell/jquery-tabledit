@@ -1,3 +1,12 @@
+v1.2.2 (2015/04/02)
+-------------------
+- Updated 'example.php' file
+- Updated project page with examples and documentation
+- Now if 'onAjax()' hook returns false, does not send the ajax request
+- Added 'rowIdentifier' option to change the name of attribute in td element for the row identifier
+- Fixed bug that allows you to change to edit mode with mouse click when the line was deleted
+- Quick fix for issue that sometimes could not remove the warning class on the edited rows
+
 v1.2.1 (2015/03/10)
 -------------------
 - Improved the select element
