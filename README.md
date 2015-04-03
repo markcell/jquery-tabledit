@@ -3,11 +3,11 @@ Inline editor for HTML tables compatible with Bootstrap.
 
 
 ## Examples
-http://markcell.github.io/jQuery-Tabledit/#examples
+http://markcell.github.io/jquery-tabledit/#examples
 
 
 ## Documentation
-http://markcell.github.io/jQuery-Tabledit/#documentation
+http://markcell.github.io/jquery-tabledit/#documentation
 
 
 ## Changelog
