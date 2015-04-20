@@ -1,12 +1,12 @@
 /*!
- * Tabledit v1.2.2 (https://github.com/markcell/jQuery-Tabledit)
+ * Tabledit v1.2.3 (https://github.com/markcell/jQuery-Tabledit)
  * Copyright (c) 2015 Celso Marques
  * Licensed under MIT (https://github.com/markcell/jQuery-Tabledit/blob/master/LICENSE)
  */
 
 /**
  * @description Inline editor for HTML tables compatible with Bootstrap
- * @version 1.2.2
+ * @version 1.2.3
  * @author Celso Marques
  */
 
@@ -88,10 +88,10 @@ if (typeof jQuery === 'undefined') {
                 identifier: function() {
                     // Hide identifier column.
                     if (settings.hideIdentifier) {
-                        $table.find('th:nth-child(' + parseInt(settings.columns.identifier[0]) + 1 + '), td:nth-child(' + parseInt(settings.columns.identifier[0]) + 1 + ')').hide();
+                        $table.find('th:nth-child(' + parseInt(settings.columns.identifier[0]) + 1 + '), tbody td:nth-child(' + parseInt(settings.columns.identifier[0]) + 1 + ')').hide();
                     }
 
-                    var $td = $table.find('td:nth-child(' + (parseInt(settings.columns.identifier[0]) + 1) + ')');
+                    var $td = $table.find('tbody td:nth-child(' + (parseInt(settings.columns.identifier[0]) + 1) + ')');
 
                     $td.each(function() {
                         // Create hidden input with row identifier.
@@ -107,7 +107,7 @@ if (typeof jQuery === 'undefined') {
                 },
                 editable: function() {
                     for (var i = 0; i < settings.columns.editable.length; i++) {
-                        var $td = $table.find('td:nth-child(' + (parseInt(settings.columns.editable[i][0]) + 1) + ')');
+                        var $td = $table.find('tbody td:nth-child(' + (parseInt(settings.columns.editable[i][0]) + 1) + ')');
 
                         $td.each(function() {
                             // Get text of this cell.
@@ -584,6 +584,12 @@ if (typeof jQuery === 'undefined') {
 
             // Key?
             switch (event.keyCode) {
+                case 9:  // Tab.
+                    if (!settings.editButton) {
+                        Edit.submit($td);
+                        Mode.edit($td.closest('td').next());
+                    }
+                    break;
                 case 13: // Enter.
                     Edit.submit($td);
                     break;

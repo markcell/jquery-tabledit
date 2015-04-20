@@ -1,3 +1,10 @@
+v1.2.3 (2015/04/20)
+-------------------
+- Added 'bower.json' to use this package manager
+- Added 'tbody' in the selector during the construction of the structure, to avoid problems with the 'tfoot'
+- Now when you tab in a row, the form is saved. Only if there is no save button
+-
+
 v1.2.2 (2015/04/02)
 -------------------
 - Updated 'example.php' file
