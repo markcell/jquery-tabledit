@@ -14,6 +14,11 @@
     "inline",
     "editor"
   ],
+  "ignore": [
+    "LICENSE",
+    "*.md",
+    "*.php"
+  ],
   "dependencies": {
     "jquery": "jquery/jquery"
   }
