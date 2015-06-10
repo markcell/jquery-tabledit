@@ -87,113 +87,12 @@ if (typeof jQuery === 'undefined') {
          */
         var Draw = {
             columns: {
-                identifier: function() {
-                    // Hide identifier column.
-                    if (settings.hideIdentifier) {
-                        $table.find('th:nth-child(' + parseInt(settings.columns.identifier[0]) + 1 + '), tbody td:nth-child(' + parseInt(settings.columns.identifier[0]) + 1 + ')').hide();
-                    }
+                init: function() {
+                    var $rows = $table.find('tbody tr');
 
-                    var $td = $table.find('tbody td:nth-child(' + (parseInt(settings.columns.identifier[0]) + 1) + ')');
-
-                    $td.each(function() {
-                        // Create hidden input with row identifier.
-                        var span = '<span class="tabledit-span tabledit-identifier">' + $(this).text() + '</span>';
-                        var input = '<input class="tabledit-input tabledit-identifier" type="hidden" name="' + settings.columns.identifier[1] + '" value="' + $(this).text() + '" disabled>';
-
-                        // Add elements to table cell.
-                        $(this).html(span + input);
-
-                        // Add attribute "id" to table row.
-                        $(this).parent('tr').attr(settings.rowIdentifier, $(this).text());
+                    $.each($rows, function() {
+                        applyChangesToRow($(this));
                     });
-                },
-                editable: function() {
-                    for (var i = 0; i < settings.columns.editable.length; i++) {
-                        var $td = $table.find('tbody td:nth-child(' + (parseInt(settings.columns.editable[i][0]) + 1) + ')');
-
-                        $td.each(function() {
-                            // Get text of this cell.
-                            var text = $(this).text();
-
-                            // Add pointer as cursor.
-                            if (!settings.editButton) {
-                                $(this).css('cursor', 'pointer');
-                            }
-
-                            // Create span element.
-                            var span = '<span class="tabledit-span">' + text + '</span>';
-
-                            // Check if exists the third parameter of editable array.
-                            if (typeof settings.columns.editable[i][2] !== 'undefined') {
-                                // Create select element.
-                                var input = '<select class="tabledit-input ' + settings.inputClass + '" name="' + settings.columns.editable[i][1] + '" style="display: none;" disabled>';
-
-                                // Create options for select element.
-                                $.each(jQuery.parseJSON(settings.columns.editable[i][2]), function(index, value) {
-                                    if (text === value) {
-                                        input += '<option value="' + index + '" selected>' + value + '</option>';
-                                    } else {
-                                        input += '<option value="' + index + '">' + value + '</option>';
-                                    }
-                                });
-
-                                // Create last piece of select element.
-                                input += '</select>';
-                            } else {
-                                // Create text input element.
-                                var input = '<input class="tabledit-input ' + settings.inputClass + '" type="text" name="' + settings.columns.editable[i][1] + '" value="' + $(this).text() + '" style="display: none;" disabled>';
-                            }
-
-                            // Add elements and class "view" to table cell.
-                            $(this).html(span + input);
-                            $(this).addClass('tabledit-view-mode');
-                       });
-                    }
-                },
-                toolbar: function() {
-                    if (settings.editButton || settings.deleteButton) {
-                        var editButton = '';
-                        var deleteButton = '';
-                        var saveButton = '';
-                        var restoreButton = '';
-                        var confirmButton = '';
-
-                        // Add toolbar column header if not exists.
-                        if ($table.find('th.tabledit-toolbar-column').length === 0) {
-                            $table.find('tr:first').append('<th class="tabledit-toolbar-column"></th>');
-                        }
-
-                        // Create edit button.
-                        if (settings.editButton) {
-                            editButton = '<button type="button" class="tabledit-edit-button ' + settings.buttons.edit.class + '" style="float: none;">' + settings.buttons.edit.html + '</button>';
-                        }
-
-                        // Create delete button.
-                        if (settings.deleteButton) {
-                            deleteButton = '<button type="button" class="tabledit-delete-button ' + settings.buttons.delete.class + '" style="float: none;">' + settings.buttons.delete.html + '</button>';
-                            confirmButton = '<button type="button" class="tabledit-confirm-button ' + settings.buttons.confirm.class + '" style="display: none; float: none;">' + settings.buttons.confirm.html + '</button>';
-                        }
-
-                        // Create save button.
-                        if (settings.editButton && settings.saveButton) {
-                            saveButton = '<button type="button" class="tabledit-save-button ' + settings.buttons.save.class + '" style="display: none; float: none;">' + settings.buttons.save.html + '</button>';
-                        }
-
-                        // Create restore button.
-                        if (settings.deleteButton && settings.restoreButton) {
-                            restoreButton = '<button type="button" class="tabledit-restore-button ' + settings.buttons.restore.class + '" style="display: none; float: none;">' + settings.buttons.restore.html + '</button>';
-                        }
-
-                        var toolbar = '<div class="tabledit-toolbar ' + settings.toolbarClass + '" style="text-align: left;">\n\
-                                           <div class="' + settings.groupClass + '" style="float: none;">' + editButton + deleteButton + '</div>\n\
-                                           ' + saveButton + '\n\
-                                           ' + confirmButton + '\n\
-                                           ' + restoreButton + '\n\
-                                       </div></div>';
-
-                        // Add toolbar column cells.
-                        $table.find('tr:gt(0)').append('<td style="white-space: nowrap; width: 1%;">' + toolbar + '</td>');
-                    }
                 }
             }
         };
@@ -410,9 +309,7 @@ if (typeof jQuery === 'undefined') {
             return jqXHR;
         }
 
-        Draw.columns.identifier();
-        Draw.columns.editable();
-        Draw.columns.toolbar();
+        Draw.columns.init();
 
         settings.onDraw();
 
@@ -601,6 +498,132 @@ if (typeof jQuery === 'undefined') {
                     break;
             }
         });
+
+        /**
+         * Private functions that will apply changes previously handled in
+         *  Draw.columns.identifier, editable, and toolbar
+         *
+         * @param {object} row
+         */
+        function applyChangesToRow(row) {
+            applyIdentifier(row);
+            applyEditable(row);
+            applyToolbar(row);   
+        }
+
+        function applyIdentifier(row) {
+            // Hide identifier column.
+            if (settings.hideIdentifier) {
+                row.find('td:eq(' + parseInt(settings.columns.identifier[0]) + ')').hide();
+            }
+
+            var $identifierTd = row.find('td:eq(' + parseInt(settings.columns.identifier[0]) + ')');
+
+            // Create hidden input with row identifier.
+            var span = '<span class="tabledit-span tabledit-identifier">' + $identifierTd.text() + '</span>';
+            var input = '<input class="tabledit-input tabledit-identifier" type="hidden" name="' + settings.columns.identifier[1] + '" value="' + $identifierTd.text() + '" disabled>';
+
+            // Add elements to table cell.
+            $identifierTd.html(span + input);
+
+            // Add attribute "id" to table row.
+            $identifierTd.parent('tr').attr(settings.rowIdentifier, $identifierTd.text());
+        }
+
+        function applyEditable(row) {
+            for (var i = 0; i < settings.columns.editable.length; i++) {
+                var $td = row.find('td:nth-child(' + (parseInt(settings.columns.editable[i][0]) + 1) + ')');
+
+                $td.each(function() {
+                    // Get text of this cell.
+                    var text = $(this).text();
+
+                    // Add pointer as cursor.
+                    if (!settings.editButton) {
+                        $(this).css('cursor', 'pointer');
+                    }
+
+                    // Create span element.
+                    var span = '<span class="tabledit-span">' + text + '</span>';
+
+                    // Check if exists the third parameter of editable array.
+                    if (typeof settings.columns.editable[i][2] !== 'undefined') {
+                        // Create select element.
+                        var input = '<select class="tabledit-input ' + settings.inputClass + '" name="' + settings.columns.editable[i][1] + '" style="display: none;" disabled>';
+
+                        // Create options for select element.
+                        $.each(jQuery.parseJSON(settings.columns.editable[i][2]), function(index, value) {
+                            if (text === value) {
+                                input += '<option value="' + index + '" selected>' + value + '</option>';
+                            } else {
+                                input += '<option value="' + index + '">' + value + '</option>';
+                            }
+                        });
+
+                        // Create last piece of select element.
+                        input += '</select>';
+                    } else {
+                        // Create text input element.
+                        var input = '<input class="tabledit-input ' + settings.inputClass + '" type="text" name="' + settings.columns.editable[i][1] + '" value="' + $(this).text() + '" style="display: none;" disabled>';
+                    }
+
+                    // Add elements and class "view" to table cell.
+                    $(this).html(span + input);
+                    $(this).addClass('tabledit-view-mode');
+                });
+            }
+        }
+
+        function applyToolbar(row) {
+            if (settings.editButton || settings.deleteButton)
+            {
+                var editButton = '';
+                var deleteButton = '';
+                var saveButton = '';
+                var restoreButton = '';
+                var confirmButton = '';
+
+                // Create edit button.
+                if (settings.editButton) {
+                    editButton = '<button type="button" class="tabledit-edit-button ' + settings.buttons.edit.class + '" style="float: none;">' + settings.buttons.edit.html + '</button>';
+                }
+
+                // Create delete button.
+                if (settings.deleteButton) {
+                    deleteButton = '<button type="button" class="tabledit-delete-button ' + settings.buttons.delete.class + '" style="float: none;">' + settings.buttons.delete.html + '</button>';
+                    confirmButton = '<button type="button" class="tabledit-confirm-button ' + settings.buttons.confirm.class + '" style="display: none; float: none;">' + settings.buttons.confirm.html + '</button>';
+                }
+
+                // Create save button.
+                if (settings.editButton && settings.saveButton) {
+                    saveButton = '<button type="button" class="tabledit-save-button ' + settings.buttons.save.class + '" style="display: none; float: none;">' + settings.buttons.save.html + '</button>';
+                }
+
+                // Create restore button.
+                if (settings.deleteButton && settings.restoreButton) {
+                    restoreButton = '<button type="button" class="tabledit-restore-button ' + settings.buttons.restore.class + '" style="display: none; float: none;">' + settings.buttons.restore.html + '</button>';
+                }
+
+                var toolbar = '<div class="tabledit-toolbar ' + settings.toolbarClass + '" style="text-align: left;">\n\
+                                   <div class="' + settings.groupClass + '" style="float: none;">' + editButton + deleteButton + '</div>\n\
+                                   ' + saveButton + '\n\
+                                   ' + confirmButton + '\n\
+                                   ' + restoreButton + '\n\
+                               </div></div>';
+
+                // Add toolbar column cell to row
+                row.append('<td style="white-space: nowrap; width: 1%;">' + toolbar + '</td>');
+            }
+        }
+
+        /**
+         * Public function to access the applyChangesToRow function
+         *
+         * @param {object} row
+         */
+        this.applyToRow = function(row) {
+            applyChangesToRow(row);
+        };
 
         return this;
     };
