@@ -7,11 +7,12 @@
 /**
  * @description Inline editor for HTML tables compatible with Bootstrap
  * @version 1.2.3
- * @author Celso Marques
+ * @principalauthor Celso Marques
+ * @author Mike Wells
  */
 
 if (typeof jQuery === 'undefined') {
-  throw new Error('Tabledit requires jQuery library.');
+    throw new Error('Tabledit requires jQuery library.');
 }
 
 (function($) {
@@ -26,6 +27,7 @@ if (typeof jQuery === 'undefined') {
 
         var defaults = {
             url: window.location.href,
+            useAJAX: true,
             inputClass: 'form-control input-sm',
             toolbarClass: 'btn-toolbar',
             groupClass: 'btn-group btn-group-sm',
@@ -271,7 +273,7 @@ if (typeof jQuery === 'undefined') {
             },
             submit: function(td) {
                 // Send AJAX request to server.
-                var ajaxResult = ajax(settings.buttons.edit.action);
+                var ajaxResult = (settings.useAJAX === true) ? ajax(settings.buttons.edit.action) : true;
 
                 if (ajaxResult === false) {
                     return;
@@ -312,7 +314,7 @@ if (typeof jQuery === 'undefined') {
                 // Enable identifier hidden input.
                 $(td).parent('tr').find('input.tabledit-identifier').attr('disabled', false);
                 // Send AJAX request to server.
-                var ajaxResult = ajax(settings.buttons.delete.action);
+                var ajaxResult = (settings.useAJAX === true) ? ajax(settings.buttons.delete.action) : true;
                 // Disable identifier hidden input.
                 $(td).parents('tr').find('input.tabledit-identifier').attr('disabled', true);
 
@@ -343,7 +345,7 @@ if (typeof jQuery === 'undefined') {
                 // Enable identifier hidden input.
                 $(td).parent('tr').find('input.tabledit-identifier').attr('disabled', false);
                 // Send AJAX request to server.
-                var ajaxResult = ajax(settings.buttons.restore.action);
+                var ajaxResult = (settings.useAJAX === true) ? ajax(settings.buttons.restore.action) : true;
                 // Disable identifier hidden input.
                 $(td).parents('tr').find('input.tabledit-identifier').attr('disabled', true);
 
