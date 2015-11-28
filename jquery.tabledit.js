@@ -40,6 +40,9 @@ if (typeof jQuery === 'undefined') {
             deleteButton: true,
             saveButton: true,
             restoreButton: true,
+            customize: {
+                actionParam: 'action'
+            },
             buttons: {
                 edit: {
                     class: 'btn btn-sm btn-default',
@@ -369,7 +372,7 @@ if (typeof jQuery === 'undefined') {
          */
         function ajax(action)
         {
-            var serialize = $table.find('.tabledit-input').serialize() + '&action=' + action;
+            var serialize = $table.find('.tabledit-input').serialize() + '&'+settings.customize.actionParam+'=' + action;
 
             var result = settings.onAjax(action, serialize);
 
