@@ -569,7 +569,7 @@ if (typeof jQuery === 'undefined') {
          *
          * @param {object} event
          */
-        $(document).on('keyup', function(event) {
+        $(document).on('keyup', '.tabledit-input', function(event) {
             // Get input element with focus or confirmation button.
             var $input = $table.find('.tabledit-input:visible');
             var $button = $table.find('.tabledit-confirm-button');
