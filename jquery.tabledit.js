@@ -369,7 +369,13 @@ if (typeof jQuery === 'undefined') {
          */
         function ajax(action)
         {
-            var serialize = $table.find('.tabledit-input').serialize() + '&action=' + action;
+            var serialize = $table.find('.tabledit-input').serialize()
+
+            if (!serialize) {
+                return false;
+            }
+
+            serialize += '&action=' + action;
 
             var result = settings.onAjax(action, serialize);
 
