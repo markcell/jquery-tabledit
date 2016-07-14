@@ -1,3 +1,7 @@
+v1.2.4 (2016/06/17)
+-------------------
+- Changed the options to allow 'select', 'text', and 'textarea' input, the fourth parameter becomes the number of rows if textarea, straight json for select options
+
 v1.2.3 (2015/04/20)
 -------------------
 - Added 'bower.json' to use this package manager
