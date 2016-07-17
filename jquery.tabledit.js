@@ -541,7 +541,7 @@ if (typeof jQuery === 'undefined') {
             /**
              * Change event when input is a select element.
              */
-            $table.on('change', 'select.tabledit-input:visible', function() {
+            $table.on('change', 'select.tabledit-input:visible', function(event) {
                 if (event.handled !== true) {
                     // Submit and update the column.
                     Edit.submit($(this).parent('td'));
