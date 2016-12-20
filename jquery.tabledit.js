@@ -128,7 +128,7 @@ if (typeof jQuery === 'undefined') {
 
                                 // Create options for select element.
                                 $.each(jQuery.parseJSON(settings.columns.editable[i][2]), function(index, value) {
-                                    if (text === value) {
+                                    if ($.trim(text) === value) {
                                         input += '<option value="' + index + '" selected>' + value + '</option>';
                                     } else {
                                         input += '<option value="' + index + '">' + value + '</option>';
