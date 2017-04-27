@@ -40,6 +40,7 @@ if (typeof jQuery === 'undefined') {
             deleteButton: true,
             saveButton: true,
             restoreButton: true,
+            livePreview: true,
             buttons: {
                 edit: {
                     class: 'btn btn-sm btn-default',
@@ -78,6 +79,10 @@ if (typeof jQuery === 'undefined') {
         var $lastDeletedRow = 'undefined';
         var $lastRestoredRow = 'undefined';
 
+        function escapeHTML(s) {
+            return String(s).replace(/&(?!\w+;)/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
         /**
          * Draw Tabledit structure (identifier column, editable columns, toolbar column).
          *
@@ -111,7 +116,7 @@ if (typeof jQuery === 'undefined') {
 
                         $td.each(function() {
                             // Get text of this cell.
-                            var text = $(this).text();
+                            var text = settings.livePreview ? $(this).text() : escapeHTML($(this).html());
 
                             // Add pointer as cursor.
                             if (!settings.editButton) {
@@ -120,11 +125,12 @@ if (typeof jQuery === 'undefined') {
 
                             // Create span element.
                             var span = '<span class="tabledit-span">' + text + '</span>';
+                            var input;
 
                             // Check if exists the third parameter of editable array.
                             if (typeof settings.columns.editable[i][2] !== 'undefined') {
                                 // Create select element.
-                                var input = '<select class="tabledit-input ' + settings.inputClass + '" name="' + settings.columns.editable[i][1] + '" style="display: none;" disabled>';
+                                input = '<select class="tabledit-input ' + settings.inputClass + '" name="' + settings.columns.editable[i][1] + '" style="display: none;" disabled>';
 
                                 // Create options for select element.
                                 $.each(jQuery.parseJSON(settings.columns.editable[i][2]), function(index, value) {
@@ -138,8 +144,8 @@ if (typeof jQuery === 'undefined') {
                                 // Create last piece of select element.
                                 input += '</select>';
                             } else {
-                                // Create text input element.
-                                var input = '<input class="tabledit-input ' + settings.inputClass + '" type="text" name="' + settings.columns.editable[i][1] + '" value="' + $(this).text() + '" style="display: none;" disabled>';
+                                // Create textarea lement.
+                                input = '<textarea class="tabledit-input ' + settings.inputClass + '" name="' + settings.columns.editable[i][1] + '" style="display: none; width: ' + $(this)[0].offsetWidth + 'px; height: ' + $(this)[0].offsetHeight + 'px;" disabled>' + escapeHTML($(this).html()) + '</textarea>';
                             }
 
                             // Add elements and class "view" to table cell.
@@ -256,7 +262,7 @@ if (typeof jQuery === 'undefined') {
                     // Get input element.
                     var $input = $(this).find('.tabledit-input');
                     // Get span text.
-                    var text = $(this).find('.tabledit-span').text();
+                    var text = settings.livePreview ? $(this).find('.tabledit-span').html() : $(this).find('.tabledit-span').text();
                     // Set input/select value with span text.
                     if ($input.is('select')) {
                         $input.find('option').filter(function() {
@@ -283,6 +289,8 @@ if (typeof jQuery === 'undefined') {
                     // Set span text with input/select new value.
                     if ($input.is('select')) {
                         $(this).find('.tabledit-span').text($input.find('option:selected').text());
+                    } else if (settings.livePreview) {
+                        $(this).find('.tabledit-span').html($input.val());
                     } else {
                         $(this).find('.tabledit-span').text($input.val());
                     }
