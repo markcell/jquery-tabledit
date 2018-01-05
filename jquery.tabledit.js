@@ -120,28 +120,67 @@ if (typeof jQuery === 'undefined') {
 
                             // Create span element.
                             var span = '<span class="tabledit-span">' + text + '</span>';
+                            
+                            // switch the third parameter to test for input type default is text
+                            switch(settings.columns.editable[i][2])
+                            {
+                                //Implement 'TEXTAREA' in tabledit ***Sharad Soni***
+                                case "textarea":
+                                    input = '<textarea ';
+                                    //each item in 4th object becomes attributes in select
+                                    $.each(settings.columns.editable[i][3], function(index, value) {
+                                        input += index + '="' + value + '" ';
+                                    });
+                                    input += 'class="tabledit-input ' + settings.inputClass + '" name="' + settings.columns.editable[i][1] + '" style="display: none;" disabled>' + obj.text()  + '</textarea>';
+                                    break;
 
-                            // Check if exists the third parameter of editable array.
-                            if (typeof settings.columns.editable[i][2] !== 'undefined') {
-                                // Create select element.
-                                var input = '<select class="tabledit-input ' + settings.inputClass + '" name="' + settings.columns.editable[i][1] + '" style="display: none;" disabled>';
+                                // Implement 'MULTISELECT' in tabledit ***Sharad Soni*** 
+                                case "multiselect":
+                                        // Create select element.
+                                        input = '<select class="multiSelect tabledit-input ' + settings.inputClass + '" name="' + settings.columns.editable[i][1] + '" style="display: none; width:auto;" disabled multiple >';
 
-                                // Create options for select element.
-                                $.each(jQuery.parseJSON(settings.columns.editable[i][2]), function(index, value) {
-                                    if (text === value) {
-                                        input += '<option value="' + index + '" selected>' + value + '</option>';
+                                        var textArray = '';
+                                        if(typeof text == "undefined" || text == "") {
+                                            // do nothing
+                                        } else {
+                                            textArray = text.split(', ');
+                                        }
+
+                                        // Create options for select element.
+                                        $.each(JSON.parse(settings.columns.editable[i][3]), function(index, value) {
+                                            if ($.inArray(value, textArray) > -1) {
+                                                input += '<option value="' + index + '" selected>' + value + '</option>';
+                                            } else {
+                                                input += '<option value="' + index + '">' + value + '</option>';
+                                            }
+                                        });
+
+                                        // Create last piece of select element.
+                                        input += '</select>';
+                                    break;
+                                    
+                                default:
+                                    if(settings.columns.editable[i].length <= 2) {
+                                        // Create text input element.
+                                        input = '<input class="tabledit-input ' + settings.inputClass + '" type="text" name="' + settings.columns.editable[i][1] + '" value="' + obj.text() + '" style="display: none;" disabled>';
+                                        break;
                                     } else {
-                                        input += '<option value="' + index + '">' + value + '</option>';
+                                        // Create select element.
+                                        input = '<select class="tabledit-input ' + settings.inputClass + '" name="' + settings.columns.editable[i][1] + '" style="display: none; width:auto;" disabled>';
+                                        input += '<option value="">Select</option>';
+                                        // Create options for select element.
+                                        $.each(JSON.parse(settings.columns.editable[i][2]), function(index, value) {
+                                            if (text === value) {
+                                                input += '<option value="' + index + '" selected>' + value + '</option>';
+                                            } else {
+                                                input += '<option value="' + index + '">' + value + '</option>';
+                                            }
+                                        });
+
+                                        // Create last piece of select element.
+                                        input += '</select>';
                                     }
-                                });
-
-                                // Create last piece of select element.
-                                input += '</select>';
-                            } else {
-                                // Create text input element.
-                                var input = '<input class="tabledit-input ' + settings.inputClass + '" type="text" name="' + settings.columns.editable[i][1] + '" value="' + $(this).text() + '" style="display: none;" disabled>';
                             }
-
                             // Add elements and class "view" to table cell.
                             $(this).html(span + input);
                             $(this).addClass('tabledit-view-mode');
