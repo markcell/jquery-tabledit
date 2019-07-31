@@ -128,10 +128,24 @@ if (typeof jQuery === 'undefined') {
 
                                 // Create options for select element.
                                 $.each(jQuery.parseJSON(settings.columns.editable[i][2]), function(index, value) {
-                                    if (text === value) {
-                                        input += '<option value="' + index + '" selected>' + value + '</option>';
+                                    if (typeof value == "object") {
+                                        input += '<optgroup label="' + index + '">';
+
+                                        $.each(value, function (i, e) {
+                                            if (text === e) {
+                                                input += '<option value="' + i + '" selected>' + e + '</option>';
+                                            } else {
+                                                input += '<option value="' + i + '">' + e + '</option>';
+                                            }
+                                        });
+
+                                        input += '</optgroup>';
                                     } else {
-                                        input += '<option value="' + index + '">' + value + '</option>';
+                                        if (text === value) {
+                                            input += '<option value="' + index + '" selected>' + value + '</option>';
+                                        } else {
+                                            input += '<option value="' + index + '">' + value + '</option>';
+                                        }
                                     }
                                 });
 
