@@ -426,23 +426,18 @@ $('#example6').Tabledit({
     },
     onSuccess: function(data, textStatus, jqXHR) {
         console.log('onSuccess(data, textStatus, jqXHR)');
-        console.log(data);
-        console.log(textStatus);
-        console.log(jqXHR);
+        console.log({data, textStatus, jqXHR});
     },
     onFail: function(jqXHR, textStatus, errorThrown) {
         console.log('onFail(jqXHR, textStatus, errorThrown)');
-        console.log(jqXHR);
-        console.log(textStatus);
-        console.log(errorThrown);
+        console.log({jqXHR, textStatus, errorThrown});
     },
     onAlways: function() {
         console.log('onAlways()');
     },
     onAjax: function(action, serialize) {
         console.log('onAjax(action, serialize)');
-        console.log(action);
-        console.log(serialize);
+        console.log({action, serialize});
     }
 });
 </pre>
