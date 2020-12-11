@@ -88,7 +88,7 @@ if (typeof jQuery === 'undefined') {
                 identifier: function() {
                     // Hide identifier column.
                     if (settings.hideIdentifier) {
-                        $table.find('th:nth-child(' + parseInt(settings.columns.identifier[0]) + 1 + '), tbody td:nth-child(' + parseInt(settings.columns.identifier[0]) + 1 + ')').hide();
+                        $table.find('th:nth-child(' + ( parseInt(settings.columns.identifier[0]) + 1 ) + '), tbody td:nth-child(' + ( parseInt(settings.columns.identifier[0]) + 1 ) + ')').hide();
                     }
 
                     var $td = $table.find('tbody td:nth-child(' + (parseInt(settings.columns.identifier[0]) + 1) + ')');
