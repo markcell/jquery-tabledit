@@ -44,13 +44,13 @@ if (typeof jQuery === 'undefined') {
                 edit: {
                     
                     class: 'btn btn-sm btn-default',
-                    html: '<span class="fas fa-edit"></span>',
+                    html: '<span class="bi bi-edit"></span>',
                     action: 'edit'
                 },
                 delete: {
                     
                     class: 'btn btn-sm btn-default',
-                    html: '<span class="fas fa-trash-alt"></span>',
+                    html: '<span class="bi bi-trash"></span>',
                     action: 'delete'
                 },
                 save: {
