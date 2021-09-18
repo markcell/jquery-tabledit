@@ -11,7 +11,7 @@ http://markcell.github.io/jquery-tabledit/#documentation
 
 
 ## Changelog
-See CHANGELOG.md file.
+See [CHANGELOG.md](https://github.com/markcell/jquery-tabledit/blob/master/CHANGELOG.md) file.
 
 
 ## License
